@@ -1,0 +1,40 @@
+function solution(bandage, health, attacks) {
+    let answer = 0;
+    let seconds = attacks[attacks.length-1][0]
+    let currentHealth = health;
+    let success = 0;
+
+    for(let i = 1 ; i <= seconds; i++){
+        if(currentHealth <= 0){
+           currentHealth = -1
+            break;
+        }
+        
+        let bonusHeal = bandage[2]
+        let attacked = false
+        
+        for(let j=0 ; j < attacks.length ; j++){
+            if(i === attacks[j][0]){
+                currentHealth = currentHealth-attacks[j][1]
+                success = 0
+                attacked = true
+            }
+        }
+        
+        if (attacked) {
+            continue;
+        }
+
+        if (currentHealth < health) {
+            currentHealth += bandage[1];
+            success++;
+        }
+
+        if (success === bonusHeal) {
+            currentHealth += bonusHeal;
+            success = 0;
+        }
+    }
+
+    return currentHealth;
+}
