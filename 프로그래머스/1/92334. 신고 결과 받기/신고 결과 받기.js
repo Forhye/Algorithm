@@ -4,10 +4,10 @@ function solution(id_list, report, k) {
     let duplComplainDelete = [...new Set(report)]
     let complainArr = []
     
-    duplComplainDelete.forEach(entry => {
-        let [complain, badUser] = entry.split(" ");
+    for (let i = 0; i < duplComplainDelete.length; i++) {
+        let [complain, badUser] = duplComplainDelete[i].split(" ");
         complainArr.push(badUser);
-    });
+    }
     
     const complainCount = complainArr.reduce((acc, item) => {
         acc[item] = (acc[item] || 0) + 1;
