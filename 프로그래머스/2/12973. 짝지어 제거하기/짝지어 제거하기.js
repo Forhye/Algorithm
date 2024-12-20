@@ -1,0 +1,19 @@
+function solution(s)
+{
+    let answer = 0
+    let stack = []
+    
+    for (let char of s) {
+        if (stack.length > 0 && stack[stack.length - 1] === char) {
+            stack.pop();
+        } else {
+            stack.push(char);
+        }
+    }
+    
+    if(stack.length === 0){
+        answer = 1
+    }
+
+    return answer;
+}
